@@ -745,6 +745,15 @@ section,
   z-index: 1;
 }
 
+.main-logo {
+  height: auto !important;
+  max-width: 800px;
+  top: -20rem !important;
+  @media (max-width: 768px) {
+    top: -10rem !important;
+  }
+}
+
 .hero:before {
   content: "";
   background: color-mix(in srgb, var(--background-color), transparent 80%);
