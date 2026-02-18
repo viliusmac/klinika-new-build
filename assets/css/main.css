@@ -1,3 +1,43 @@
+#team-carousel-controls {
+  position: relative;
+}
+.team-carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.45rem;
+  cursor: pointer;
+}
+.team-prev { left: -4.5rem; }
+.team-next { right: -4.5rem; }
+.team-carousel-control .bi { color: var(--default-color) !important; font-size: 1.9rem; }
+@media (max-width: 576px) {
+  .team-prev { left: 0.5rem; }
+  .team-next { right: 0.5rem; }
+}
+
+/* Mobile tweaks for team cards */
+@media (max-width: 576px) {
+  #komandaCarousel .portfolio-content img { max-height: 240px; }
+  .person-description { padding: 8px; }
+  .person-description-text.top-text { font-size: 18px; }
+  .person-description-text.bottom-text { font-size: 13px; }
+  /* reduce spacing inside cards */
+  #komandaCarousel .portfolio-item { padding-left: 6px; padding-right: 6px; }
+}
+
+/* Smaller adjustments for small tablets */
+@media (min-width: 577px) and (max-width: 1000px) {
+  .person-description-text.top-text { font-size: 20px; }
+  .person-description-text.bottom-text { font-size: 14px; }
+}
+
 /**
 * Template Name: Folio
 * Template URL: https://bootstrapmade.com/folio-bootstrap-portfolio-template/
@@ -38,8 +78,8 @@
   --nav-hover-color: #ffffff; /* Applied to main navmenu links when they are hovered over or active */
   --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
-  --nav-dropdown-color: #898989; /* Used for navigation links of the dropdown items in the navigation menu. */
-  --nav-dropdown-hover-color: #b8a07e; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+  --nav-dropdown-color: #525252; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #474747; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
 
 /* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
@@ -50,7 +90,7 @@
 }
 
 .dark-background {
-  --background-color: #000000;
+  --background-color: #293f35;;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #9e9e9e;
@@ -65,10 +105,21 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+html {
+  height: 100%;
+}
+
 body {
   color: var(--default-color);
   background-color: var(--background-color);
   font-family: var(--default-font);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
 }
 
 a {
@@ -80,6 +131,28 @@ a {
 a:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
+}
+
+/* Keep non-link dropdown anchors (no href and no class) visually inert */
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Ensure nav dropdown anchors without href remain visible and interactive */
+.navmenu a:not([href]):not([class]),
+.navmenu a:not([href]):not([class]):hover {
+  color: var(--nav-color);
+  text-decoration: none;
+  cursor: pointer;
+  pointer-events: auto;
+
+  @media (max-width: 1200px) {
+    color: var(--nav-dropdown-color) !important;
+  }
 }
 
 h1,
@@ -276,6 +349,7 @@ h6 {
   .navmenu .dropdown ul .active:hover,
   .navmenu .dropdown ul li:hover>a {
     color: var(--nav-dropdown-hover-color);
+    font-weight: 500;
   }
 
   .navmenu .dropdown:hover>ul {
@@ -642,7 +716,6 @@ section,
 .section-title h2 {
   font-size: 32px;
   font-weight: 300;
-  margin-bottom: 15px;
 }
 
 .section-title p {
@@ -967,6 +1040,77 @@ section,
     font-size: 14px;
     margin: 0 5px;
   }
+
+/* Team carousel styles (moved from inline) */
+#komandaCarousel .portfolio-content img { width: 100%; object-fit: cover; max-height:240px; }
+#komandaCarousel .carousel-item .row { align-items: stretch; }
+#komandaCarousel .carousel-control-prev,
+#komandaCarousel .carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 1;
+  z-index: 1050;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Ensure carousel container allows controls to sit outside slides */
+#komandaCarousel { position: relative; overflow: visible; }
+#komandaCarousel .carousel-control-prev { left: -3.5rem; }
+#komandaCarousel .carousel-control-next { right: -3.5rem; }
+
+/* Larger offset on wide screens to avoid overlapping images */
+@media (min-width: 1200px) {
+  #komandaCarousel .carousel-control-prev { left: -4.25rem; }
+  #komandaCarousel .carousel-control-next { right: -4.25rem; }
+}
+@media (max-width: 992px) and (min-width: 577px) {
+  #komandaCarousel .carousel-control-prev { left: -2.5rem; }
+  #komandaCarousel .carousel-control-next { right: -2.5rem; }
+}
+@media (max-width: 576px) {
+  #komandaCarousel .carousel-control-prev { left: 0.5rem; }
+  #komandaCarousel .carousel-control-next { right: 0.5rem; }
+}
+/* Chevron icon color */
+#komandaCarousel .carousel-control-prev .bi,
+#komandaCarousel .carousel-control-next .bi {
+  color: var(--default-color) !important;
+  font-size: 1.8rem;
+}
+
+/* Make the button area non-opaque and slightly larger to improve hit area */
+#komandaCarousel .carousel-control-prev,
+#komandaCarousel .carousel-control-next {
+  background: transparent;
+  padding: 0.35rem 0.45rem;
+}
+
+/* Stronger overrides to ensure controls sit outside images and use default color */
+#komandaCarousel .carousel-control-prev,
+#komandaCarousel .carousel-control-next {
+  position: absolute !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 9999 !important;
+  color: var(--default-color) !important;
+}
+
+#komandaCarousel .carousel-control-prev { left: -4.5rem !important; }
+#komandaCarousel .carousel-control-next { right: -4.5rem !important; }
+
+@media (max-width: 576px) {
+  #komandaCarousel .carousel-control-prev { left: 0.5rem !important; }
+  #komandaCarousel .carousel-control-next { right: 0.5rem !important; }
+}
+
+/* Hide default icon backgrounds if present */
+#komandaCarousel .carousel-control-prev-icon,
+#komandaCarousel .carousel-control-next-icon { display: none !important; }
+
 }
 
 .portfolio .portfolio-content {
@@ -1179,11 +1323,29 @@ section,
 /*--------------------------------------------------------------
 # Contact Section
 --------------------------------------------------------------*/
+#registracija {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#registracija [data-aos] {
+  display: block !important;
+}
+
 .contact .info-wrap {
   background-color: var(--surface-color);
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
   margin-bottom: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .contact .info-wrap {
+    padding: 20px;
+  }
 }
 
 .contact .info-item i {
@@ -1215,6 +1377,20 @@ section,
 .contact .info-item:hover i {
   background: var(--accent-color);
   color: var(--contrast-color);
+}
+
+@media (max-width: 576px) {
+  .contact .info-item {
+    flex-wrap: wrap;
+  }
+  
+  .contact .info-item i {
+    width: 48px;
+    height: 48px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+  }
 }
 
 .contact .php-email-form {
@@ -1506,10 +1682,16 @@ section,
 .person-description-text.top-text {
   font-size: 25px;
   font-weight: 600;
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 }
 
 .person-description-text.bottom-text {
   font-size: 18px;
+    @media only screen and (max-width: 600px) {
+    font-size: 16px;
+  }
 }
 
 /* accordion */
@@ -1584,6 +1766,19 @@ section,
   vertical-align: middle;
 }
 
+/* Remove default list bullets and left padding inside accordion lists */
+.accordion-body ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+.accordion-body ul li {
+  padding-left: 0;
+  display: flex;
+  align-items: normal;
+  text-align: left;
+}
 /* Optional: Add subtle arrow rotation */
 .accordion-button::after {
   transition: transform 0.3s ease;
@@ -1615,9 +1810,11 @@ section,
     border-radius: 0 !important;
 }
 
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+.inactive-link {
+   pointer-events: none;
+   cursor: default;
+}
+
+.mr-5 {
+  margin-right: 1rem;
 }
