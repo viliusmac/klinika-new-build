@@ -25,7 +25,7 @@
 /* Mobile tweaks for team cards */
 @media (max-width: 576px) {
   #komandaCarousel .portfolio-content img { max-height: 240px; }
-  .person-description { padding: 8px; }
+  .person-description { padding: 8px; min-height: 110px; }
   .person-description-text.top-text { font-size: 18px; }
   .person-description-text.bottom-text { font-size: 13px; }
   /* reduce spacing inside cards */
@@ -67,9 +67,10 @@
   --background-color: #ffffff; /* Background color for the entire website, including individual sections */
   --default-color: #083515db; /* Default color used for the majority of the text content across the entire website */
   --heading-color: rgb(41, 32, 26);; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #afc2af; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --accent-color: #6a876a; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --alert-color: #9e0808;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -1828,4 +1829,31 @@ section,
 
 .mr-5 {
   margin-right: 1rem;
+}
+
+.alert-text {
+  font-size: 18px;
+  color: var(--alert-color);
+}
+
+.highlighted-text {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 6px 12px;
+}
+
+.download-btn {
+  background-color: var(--nav-dropdown-color);
+  color: var(--contrast-color);
+  font-size: 18px;
+  padding: 12px 24px;
+}
+
+.download-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.default-text {
+  color: black;
 }
