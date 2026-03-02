@@ -99,7 +99,7 @@ main {
 }
 
 a {
-  color: var(--contrast-color);
+  color: var(--accent-color);
   text-decoration: none;
   transition: 0.3s;
 }
