@@ -7,7 +7,7 @@
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  z-index: 9999;
+  z-index: 994;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -903,7 +903,7 @@ section,
   position: absolute !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
-  z-index: 9999 !important;
+  z-index: 9995 !important;
   color: var(--default-color) !important;
 }
 
