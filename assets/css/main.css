@@ -99,7 +99,7 @@ main {
 }
 
 a {
-  color: var(--accent-color);
+  color: var(--contrast-color);
   text-decoration: none;
   transition: 0.3s;
 }
@@ -830,7 +830,9 @@ section,
 
 .portfolio .portfolio-filters li:hover,
 .portfolio .portfolio-filters li.filter-active {
-  color: var(--accent-color);
+  color: var(--nav-hover-color);
+  background-color: var(--accent-color);
+  padding: 8px 8px;
 }
 
 .portfolio .portfolio-filters li:first-child {

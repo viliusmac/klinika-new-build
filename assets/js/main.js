@@ -1,30 +1,6 @@
 (function() {
   "use strict";
 
-  const swiper = new Swiper('.doctors-swiper', {
-    slidesPerView: 4,
-    spaceBetween: 24,
-    loop: false,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    breakpoints: {
-      0: {
-        slidesPerView: 1.2
-      },
-      576: {
-        slidesPerView: 2
-      },
-      992: {
-        slidesPerView: 3
-      },
-      1200: {
-        slidesPerView: 4
-      }
-    }
-  });
-
   GLightbox({
     selector: '.glightbox',
     descPosition: 'bottom'
@@ -135,21 +111,6 @@
     });
   }
 
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
-
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
-    });
-  }
-
-  window.addEventListener("load", initSwiper);
 
   const glightbox = GLightbox({
     selector: '.glightbox'
