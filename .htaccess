@@ -1,0 +1,12 @@
+RewriteEngine On
+
+# Redirect index.html → /
+RewriteCond %{THE_REQUEST} /index\.html
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Set index.html as default
+DirectoryIndex index.html
+
+# Remove .html from URLs (make /file load file.html)
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+)$ $1.html [L]
